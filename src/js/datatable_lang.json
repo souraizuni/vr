@@ -1,0 +1,24 @@
+{
+    "thousands": ",",
+    "sInfoEmpty": "共 0 頁",
+    "sInfoFiltered": " - 找到 _TOTAL_ 筆 資料",
+    "sInfoPostFix": "",
+    "sInfoThousands": ".",
+    "sLengthMenu": " _MENU_ 筆/頁",
+    "sLoadingRecords": "資料載入中...",
+    "sProcessing": "處理中...",
+    "sSearch": "搜尋",
+    "sZeroRecords": "找不到符合的資料。",
+    "oPaginate": {
+        "sPrevious": "«",
+        "sNext": "»",
+        "sFirst": "首頁",
+        "sLast": "尾頁"
+    },
+    "oAria": {
+        "sSortAscending": " 排序:升冪",
+        "sSortDescending": " 排序:降冪"
+    },
+    "sEmptyTable": "無資料!"
+
+}

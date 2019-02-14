@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <title>VR資料庫</title>
+    <link rel="shortcut icon" href="src/logo/vr-org-final.png" type="image/x-icon" />
+    <link rel="stylesheet" href="src/css/bootstrap.min.css" />
+
+    <script src='src/js/jquery.min.js'></script>
+    <script src="src/js/popper.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <script src="src/js/ie10-viewport-bug-workaround.js"></script>
+
+    <link href="src/css/open-iconic-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="src/css/all.css" rel="stylesheet" type="text/css" />
+    <link href="src/css/flatpickr.min.css" rel="stylesheet">
+    <link href="src/css/theme.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/tablestyle.css">
+
+    <script src="src/js/theme.min.js"></script>
+    <script src="src/js/stacked-menu.min.js"></script>
+
+
+    <script src="jsp/Publicfun.js"></script>
+    <script>
+  
+        $(function () {
+         //   console.log($(window).height() + "iframe_resize=>w,=" + $(document).height()); 
+            $("#iframe_main").css({ height: ($(window).height()) });
+            user = "";
+            //    chk_url();
+            //  main_resize();
+            //    load_tables();
+
+            /*  $("#menu-btn").click(function () {               
+                 if ($('#icon_left').hasClass('fa-chevron-left')) {
+                     $('#icon_left').removeClass('fa-chevron-left').addClass("fa-chevron-right")
+                     $('#div_set').hide();
+                 } else {
+                     $('#icon_left').removeClass('fa-chevron-right').addClass("fa-chevron-left")
+                     $('#div_set').show();
+                 }
+             }) */
+            $('#menu-btn').click(function () {
+                var wdth = $(window).width();
+
+                var e = $("#menu-btn").hasClass("active");
+                if (e) {
+                    if (wdth >= 900) {
+                        $("aside").removeClass("app-aside-expand-lg");
+                    }
+                    $(".app-aside").removeClass("show");
+                    $('#menu-btn').removeClass("active");
+                } else {
+                    $("aside").addClass("app-aside-expand-lg");
+                    $(".app-aside").addClass("show");
+                    $('#menu-btn').addClass("active");
+                }
+                if ($('#menu-btn i').hasClass('fa-chevron-up')) {
+                    $('#menu-btn i').removeClass('fa-chevron-up').addClass('fa-chevron-down')
+                } else {
+                    $('#menu-btn i').removeClass('fa-chevron-down').addClass("fa-chevron-up")
+                }
+
+            })
+            $("#u1_task li").click(function () {
+                var idx = $(this).index();
+                $("#u1_task li").removeClass("active").eq(idx).addClass("active")
+            })
+            $("li.has-child").click(function () {
+                $("#u1_task li").removeClass("active");
+            })
+        });
+
+        function go(murl = "") {
+            $("#iframe_main").attr("src", murl);
+        }
+
+    </script>
+
+    <style type="text/css">
+        .menu-text {
+            font-size: 1.15em;
+        }
+
+        li.menu-item>ul.menu>li.menu-item:hover,
+        a.menu-link:hover {
+            background-color: #f7c46c;
+            font-size: 1.1em;
+             color: #346cb0; 
+           /* color:#007bff; */
+        }
+
+        li.active {
+            background-color: #346cb0;
+            color:#f7c46c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="app-header app-header-dark">
+        <!-- .top-bar -->
+        <div class="top-bar">
+            <div class="top-bar-brand d-lg-flex d-md-none ">
+                <button id="menu-btn" class="btn btn-primary active" type="button">
+                    <span class="hamburger-box"><i class="fa fa-chevron-up"></i></span>
+                    <!--  <span class="hamburger-box"><span class="hamburger-inner"></span></span> -->
+                </button>
+                <a href="index.html"><img src="src/logo/vr-org-final.png" alt="" style="height: 32px;width: auto;"></a>
+            </div><!-- /.top-bar-brand -->
+            <!-- .top-bar-list -->
+            <div class="top-bar-list">
+                <div class="top-bar-item px-2 d-md-none1 d-lg-none d-xl-none">
+                    <!-- toggle menu -->
+                    <button class="hamburger hamburger-squeeze" type="button" data-toggle="aside" aria-label="toggle menu">
+                        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+                    </button>
+                    <!-- /toggle menu -->
+                </div><!-- /.top-bar-item -->
+                <!-- .top-bar-item -->
+                <div class="top-bar-item top-bar-item-full">
+                    <!-- .top-bar-search -->
+                    <div class="top-bar-search" style="text-align:center;">
+                        <h3>VR資料庫</h3>
+                        <!--  <div class="input-group input-group-search">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
+                            </div><input type="text" class="form-control" aria-label="Search" placeholder="Search">
+                        </div> -->
+                    </div><!-- /.top-bar-search -->
+                </div><!-- /.top-bar-item -->
+                <!-- .top-bar-item -->
+                <div class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
+                    <!-- .btn-account -->
+                    <div class="dropdown">
+                        <button class="btn-account d-none d-lg-flex" type="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><span class="user-avatar user-avatar-lg">
+                                <img src="src\icon\md-contact.svg" alt=""></span>
+                            <span class="account-summary pr-lg-4 d-none d-lg-block">
+                                <span class="account-name">Hello</span> <span class="account-description">set up</span></span></button>
+                        <div class="dropdown-arrow dropdown-arrow-left"></div><!-- .dropdown-menu -->
+                        <div class="dropdown-menu">
+                            <h6 class="dropdown-header d-none d-md-block1 d-lg-none"> User </h6><a class="dropdown-item"
+                                href="user-profile.html"><span class="dropdown-icon oi oi-person"></span> Profile</a>
+                            <a class="dropdown-item" href="auth-signin-v1.html"><span class="dropdown-icon oi oi-account-logout"></span>
+                                Logout</a>
+                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#!">Help Center</a>
+
+                        </div><!-- /.dropdown-menu -->
+                    </div><!-- /.btn-account -->
+                </div><!-- /.top-bar-item -->
+            </div><!-- /.top-bar-list -->
+        </div><!-- /.top-bar -->
+    </header>
+    <aside class="app-aside app-aside-expand-lg app-aside-light card">
+        <div class="top-bar-item px-2 d-lg-none d-xl-none">
+            <button class="hamburger hamburger-squeeze btn-primary" type="button" data-toggle="aside" aria-label="toggle menu">
+                <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+            </button>
+            <a href="index.html"><img src="src/logo/vr-org-final.png" alt="" style="height: 32px;width: auto;"></a>
+        </div><!-- /.top-bar-item -->
+        <div class="aside-content">
+            <section class="aside-menu " style="overflow:auto;">
+                <!-- .stacked-menu -->
+                <nav id="stacked-menu" class="stacked-menu stacked-menu-has-collapsible">
+                    <!-- .menu -->
+                    <ul class="menu">
+                        <!-- .menu-item -->
+                        <li class="menu-item has-active">
+                            <a href="#" onclick="go('empty.html')" class="menu-link"><span class="menu-icon fa fa-home"></span>
+                                <span class="menu-text">首頁</span></a>
+
+                        </li><!-- /.menu-item -->
+                        <!-- .menu-item #Forms 遊戲介紹 -->
+                        <li class="menu-item has-child">
+                            <a href="#" class="menu-link"><span class="menu-icon oi oi-pencil"></span> <span class="menu-text">遊戲介紹</span></a>
+                            <!-- child menu -->
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('empty.html')" class="menu-link" tabindex="-1">Vive遊戲</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('empty.html')" class="menu-link" tabindex="-1">Oculus遊戲</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('empty.html')" class="menu-link" tabindex="-1">Oculus go遊戲</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('empty.html')" class="menu-link" tabindex="-1">PSVR遊戲</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('empty.html')" class="menu-link" tabindex="-1">其他遊戲</a>
+                                </li>
+                            </ul><!-- /child menu -->
+                        </li><!-- /.menu-item -->
+                        <li class="menu-item has-child has-open">
+                            <a href="#" onclick="go('empty.html')" class="menu-link">
+                                <span class="menu-icon oi oi-puzzle-piece"></span><span class="menu-text">好用軟體</span></a>
+                            <ul class="menu" id="u1_task">
+                                <li class="menu-item">
+                                    <a onclick="go('empty.html')" class="menu-link">推薦必裝</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a onclick="go('empty.html')" class="menu-link">測試一</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a onclick="go('empty.html')" class="menu-link">測試二</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a onclick="go('empty.html')" class="menu-link">測試三</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a onclick="go('empty.html')" class="menu-link">測試四</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- .menu-item #Tables 表單檢視-->
+                        <li class="menu-item has-child">
+                            <a href="#" onclick="go('empty.html')" class="menu-link"><span class="menu-icon fa fa-table"></span>
+                                <span class="menu-text">欄位一</span></a>
+                            <!-- child menu -->
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('empty.html')" class="menu-link" tabindex="-1">測試一</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('empty.html')" class="menu-link" tabindex="-1">測試二</a>
+                                </li>
+                            </ul><!-- /child menu -->
+                        </li><!-- /.menu-item -->
+                        <!-- .menu-item  #Collections 統計分析 -->
+                        <li class="menu-item has-child">
+                            <a href="#" class="menu-link"><span class="menu-icon oi oi-bar-chart"></span> <span class="menu-text">統計分析</span></a>
+                            <!-- child menu -->
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('http://uselooper.com/collection-chartjs-line.html')" class="menu-link"
+                                        tabindex="-1">Line</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('http://uselooper.com/collection-chartjs-others.html')"
+                                        class="menu-link" tabindex="-1">Chart
+                                        charts</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" onclick="go('http://uselooper.com/collection-flot-charts.html')" class="menu-link"
+                                        tabindex="-1">Flot</a>
+                                </li>
+                            </ul><!-- /child menu -->
+                        </li><!-- /.menu-item -->
+                        <!-- .menu-item -->
+                        <li class="menu-item has-child">
+                            <a href="#" class="menu-link"><span class="menu-icon oi oi-person"></span> <span class="menu-text">成員</span></a>
+                            <!-- child menu -->
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a onclick="go('list.html')"  class="menu-link" tabindex="-1">成員列表</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="menu-link" tabindex="-1">管理者</a>
+                                </li>
+                            </ul><!-- /child menu -->
+                        </li><!-- /.menu-item -->
+                    </ul><!-- /.menu -->
+                </nav><!-- /.stacked-menu -->
+                <div class="aside-header d-block d-lg-none">
+                    <!-- dropdown-items -->
+                    <div class="pb-3">
+                        <a class="dropdown-item" href="user-profile.html"><span class="dropdown-icon oi oi-person"></span>
+                            Profile</a>
+                        <a class="dropdown-item" href="auth-signin-v1.html"><span class="dropdown-icon oi oi-account-logout"></span>
+                            Logout</a>
+
+                    </div><!-- /dropdown-items -->
+                </div><!-- /.dropdown-aside -->
+                <div class="ps__rail-x" style="left: 0px; bottom: -433px;">
+                    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps__rail-y" style="top: 433px; height: 95px; right: 0px;">
+                    <div class="ps__thumb-y" tabindex="0" style="top: 78px; height: 17px;"></div>
+                </div>
+            </section>
+            <!-- Skin changer -->
+          
+        </div><!-- /.aside-content -->
+    </aside>
+
+    <div class="app-main">
+        <!--  scrolling="yes"-->
+        <iframe id="iframe_main" src="empty.html" style="width:100%;height:620px; overflow:auto;" scrolling="yes"
+            frameborder="0"></iframe>
+    </div>
+
+</body>
+
+</html>

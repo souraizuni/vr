@@ -1,0 +1,153 @@
+html,
+body {
+    height: 100%;
+}
+ 
+html {
+    font-family: sans-serif;
+    line-height: 1;
+    font-size: 1em;
+    color: #4d4d4d;
+}
+
+body {
+    background: rgba(248, 193, 214, 0.5);
+    line-height: 1.5;
+    font-family: "標楷體", "微軟正黑體", Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+}
+ 
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+input:disabled,
+input[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.form-control-sm,
+input {
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .2rem;
+}
+
+.content {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.required {
+    border-color: tomato;
+    /*  text-transform: uppercase; */
+}
+
+.sel {
+    background-color: #fcc4c4;
+    border: 1px solid #ff8888;
+}
+
+.start {
+    position: relative;
+    top: 3px;
+    font-size: 8pt;
+    color: #d9534f;
+}
+
+
+ul li {
+    list-style-type: none;
+}
+
+.usr-icon:after {
+    position: relative;
+    color: #333;
+    border: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+    padding: .25rem .5rem;
+    line-height: 1;
+    border-radius: .2rem;
+}
+
+.usr-icon-left-single-arrow:after {
+    /* < content: "\02329";
+    */
+    content: "\0003C";
+    font-weight: bold;
+}
+
+.usr-icon-right-single-arrow:after {
+    /* >   content: "\0232A"; */
+    content: "\0003E";
+    font-weight: bold;
+}
+
+.usr-icon-temp-c:after {
+    /* 溫度 .C */
+    content: "\02103";
+    font-weight: bold;
+}
+
+.usr-icon-temp-f:after {
+    /* 溫度 .f */
+    content: "\02109";
+    font-weight: bold;
+}
+
+.td-title th {
+    /* background-image: linear-gradient(to bottom, #FFB0B0 20%, #FF7878 80%); 
+    box-shadow: inset -1px -2px 1px 0px rgba(131, 117, 122, 0.27);*/
+    background-color: rgb(252, 248, 244);
+    border-radius: 10px;
+    font-weight: 200;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#sch_table td {
+    word-wrap: break-word;
+    table-layout: fixed;
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-plus:before {
+    content: "\2b";
+}
+
+.glyphicon-search:before {
+    content: "\e003";
+}
+
+.glyphicon-heart:before {
+    content: "\e005";
+}
+
+.glyphicon-star:before {
+    content: "\e006";
+}
+
+.glyphicon-star-empty:before {
+    content: "\e007";
+}
+
+.glyphicon-user:before {
+    content: "\e008";
+}

@@ -1,0 +1,14 @@
+/* body {
+    
+    padding-bottom: 20px;
+}
+
+.navbar {
+    margin-bottom: 20px;
+} */
+
+.active>.nav-link,
+.nav-link.active {
+    color: #6a4028;
+    font: 200;
+}

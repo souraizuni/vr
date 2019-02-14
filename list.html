@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+
+<link rel="stylesheet" type="text/css" href="/css/tablestyle.css">
+</head>
+
+
+<body>
+<div id="test"></div>
+<script>
+(function(window, $) {
+var sheetID = "1DGCYntymkU-g1NZV41lb0q0T2zntO2XeniYWbjXXojo", // 試算表代號
+gid = "2031418195", // 工作表代號
+sql = "", // SQL 語法
+callback = "callback"; // 回呼函數名稱
+
+$.getScript("https://spreadsheets.google.com/tq?tqx=responseHandler:" + callback + "&tq=" + sql + "&key=" + sheetID + "&gid=" + gid);
+
+window[callback] = function(json) {
+
+var rowArray = json.table.rows,
+rowLength = rowArray.length,
+html = "<table class='footable'><thead><tr><th bgcolor='#00FF2E'><font color='#000000'>Line ID</font></th><th bgcolor='#000000'><font color='#ffffff'>Steam ID</font></th><th bgcolor='#FF9726'><font color='#000000'>EA/ Origin ID</font></th><th bgcolor='#3688E5'><font color='#ffffff'>BattleTag ID</font></th><th bgcolor='#0019FB'><font color='#ffffff'> PSN </font></th><th bgcolor='#FF001A'><font color='#ffffff'>Nintendo Switch</font></th><th bgcolor='#000000'><font color='#ffffff'>Oculus</font></th><th bgcolor='#00FF2E'><font color='#000000'>XBOX Live</font></th><th bgcolor='#000000'><font color='#ffffff'>Epic Games</font></th><th bgcolor='#674FA5'><font color='#ffffff'>Ubisoft</font></th></tr> </thead><tbody>",
+i, j, dataGroup, dataLength;
+for (i = 0; i < rowLength; i++) {
+dataGroup = rowArray[i].c;
+dataLength = dataGroup.length;
+html +="<tr>"
+for (j = 0; j < 10; j++) {
+	if (!dataGroup[j]) {
+				html += "<td></td>";
+		continue;
+	}
+	if(j==1){
+  	if(dataGroup[j].v.indexOf("http")>=0){		html += "<td>	<a href='"+(dataGroup[j].f || dataGroup[j].v ) + "'>連結</a></td>";}
+		else{html += "<td>"+(dataGroup[j].f || dataGroup[j].v ) + "</td>";}
+	}else{
+	html += "<td>"+(dataGroup[j].f || dataGroup[j].v ) + "</td>";
+	}
+	
+}
+html += "</tr>";
+}
+html+="</tbody></table>";
+$("#test").html(html);
+};
+})(window, jQuery);
+
+$(function() {
+      $('table').footable();
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="css/tablestyle.css">
+</body>
