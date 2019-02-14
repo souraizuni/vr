@@ -68,12 +68,14 @@ for (j = 0; j < 10; j++) {
 html += "</tr>";
 }
 html+="</tbody></table></div>";
-$("#test").html(html);
+print(html);
+// $("#test").html(html);
+$('table').footable();
 };
 })(window, jQuery);
 
 $(function() {
-      $('table').footable();
+      
     });
 </script>
 <link rel="stylesheet" type="text/css" href="css/tablestyle.css">
