@@ -13,6 +13,13 @@
 
 <body>
 <div id="test"></div>
+<script src="js/footable.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+      $('table').footable();
+    });
+</script>
+
 <script>
 (function(window, $) {
 var sheetID = "1DGCYntymkU-g1NZV41lb0q0T2zntO2XeniYWbjXXojo", // 試算表代號
@@ -26,7 +33,7 @@ window[callback] = function(json) {
 
 var rowArray = json.table.rows,
 rowLength = rowArray.length,
-html = "<table class='footable'><thead><tr><th bgcolor='#00FF2E'><font color='#000000'>Line ID</font></th><th bgcolor='#000000'><font color='#ffffff'>Steam ID</font></th><th bgcolor='#FF9726'><font color='#000000'>EA/ Origin ID</font></th><th bgcolor='#3688E5'data-hide='phone,tablet'><font color='#ffffff'>BattleTag ID</font></th><th bgcolor='#0019FB'data-hide='phone,tablet'><font color='#ffffff'> PSN </font></th><th bgcolor='#FF001A' data-hide='phone,tablet'><font color='#ffffff'>Nintendo Switch</font></th><th bgcolor='#000000' data-hide='phone,tablet'><font color='#ffffff'>Oculus</font></th><th bgcolor='#00FF2E' data-hide='phone,tablet'><font color='#000000'>XBOX Live</font></th><th bgcolor='#000000' data-hide='phone,tablet'><font color='#ffffff'>Epic Games</font></th><th bgcolor='#674FA5' data-hide='phone,tablet'><font color='#ffffff'>Ubisoft</font></th></tr> </thead><tbody>",
+html = "<table class='footable' data-filter='#filter'><thead><tr><th bgcolor='#00FF2E'><font color='#000000'>Line ID</font></th><th bgcolor='#000000'><font color='#ffffff'>Steam ID</font></th><th bgcolor='#FF9726'><font color='#000000'>EA/ Origin ID</font></th><th bgcolor='#3688E5'data-hide='phone,tablet'><font color='#ffffff'>BattleTag ID</font></th><th bgcolor='#0019FB'data-hide='phone,tablet'><font color='#ffffff'> PSN </font></th><th bgcolor='#FF001A' data-hide='phone,tablet'><font color='#ffffff'>Nintendo Switch</font></th><th bgcolor='#000000' data-hide='phone,tablet'><font color='#ffffff'>Oculus</font></th><th bgcolor='#00FF2E' data-hide='phone,tablet'><font color='#000000'>XBOX Live</font></th><th bgcolor='#000000' data-hide='phone,tablet'><font color='#ffffff'>Epic Games</font></th><th bgcolor='#674FA5' data-hide='phone,tablet'><font color='#ffffff'>Ubisoft</font></th></tr> </thead><tbody>",
 i, j, dataGroup, dataLength;
 for (i = 0; i < rowLength; i++) {
 dataGroup = rowArray[i].c;
