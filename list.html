@@ -1,60 +1,59 @@
 
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-tw">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="/css/tablestyle.css">
+	<link href="//fooplugins.github.io/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet">
+
+	<link href="//fooplugins.github.io/FooTable/docs/css/docs.css" rel="stylesheet">
+	<script src="//fooplugins.github.io/FooTable/docs/js/demo-rows.js"></script>
 </head>
 
-
 <body>
-<div id="test"></div>
+
+
+
+
+<div class="container">
+
+	<table class="table table-striped">
+	</table>
+
+</div> <!-- /container -->
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="//fooplugins.github.io/FooTable/docs/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Add in any FooTable dependencies we may need -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<!-- Add in FooTable itself -->
+<script src="//fooplugins.github.io/FooTable/compiled/footable.js"></script>
+<!-- Initialize FooTable -->
 <script>
-(function(window, $) {
-var sheetID = "1DGCYntymkU-g1NZV41lb0q0T2zntO2XeniYWbjXXojo", // 試算表代號
-gid = "2031418195", // 工作表代號
-sql = "", // SQL 語法
-callback = "callback"; // 回呼函數名稱
-
-$.getScript("https://spreadsheets.google.com/tq?tqx=responseHandler:" + callback + "&tq=" + sql + "&key=" + sheetID + "&gid=" + gid);
-
-window[callback] = function(json) {
-
-var rowArray = json.table.rows,
-rowLength = rowArray.length,
-html = "<table class='footable'><thead><tr><th bgcolor='#00FF2E'><font color='#000000'>Line ID</font></th><th bgcolor='#000000'><font color='#ffffff'>Steam ID</font></th><th bgcolor='#FF9726'><font color='#000000'>EA/ Origin ID</font></th><th bgcolor='#3688E5'data-hide='phone,tablet'><font color='#ffffff'>BattleTag ID</font></th><th bgcolor='#0019FB'data-hide='phone,tablet'><font color='#ffffff'> PSN </font></th><th bgcolor='#FF001A' data-hide='phone,tablet'><font color='#ffffff'>Nintendo Switch</font></th><th bgcolor='#000000' data-hide='phone,tablet'><font color='#ffffff'>Oculus</font></th><th bgcolor='#00FF2E' data-hide='phone,tablet'><font color='#000000'>XBOX Live</font></th><th bgcolor='#000000' data-hide='phone,tablet'><font color='#ffffff'>Epic Games</font></th><th bgcolor='#674FA5' data-hide='phone,tablet'><font color='#ffffff'>Ubisoft</font></th></tr> </thead><tbody>",
-i, j, dataGroup, dataLength;
-for (i = 0; i < rowLength; i++) {
-dataGroup = rowArray[i].c;
-dataLength = dataGroup.length;
-html +="<tr>"
-for (j = 0; j < 10; j++) {
-	if (!dataGroup[j]) {
-				html += "<td></td>";
-		continue;
-	}
-	if(j==1){
-  	if(dataGroup[j].v.indexOf("http")>=0){		html += "<td>	<a href='"+(dataGroup[j].f || dataGroup[j].v ) + "'>連結</a></td>";}
-		else{html += "<td>"+(dataGroup[j].f || dataGroup[j].v ) + "</td>";}
-	}else{
-	html += "<td>"+(dataGroup[j].f || dataGroup[j].v ) + "</td>";
-	}
-	
-}
-html += "</tr>";
-}
-html+="</tbody></table>";
-$("#test").html(html);
-};
-})(window, jQuery);
-
-$(function() {
-      $('#test').footable();
-    });
+	jQuery(function($){
+		$('.table').footable({
+			"paging": {
+				"enabled": true
+			},
+			"filtering": {
+				"enabled": true
+			},
+			"sorting": {
+				"enabled": false
+			},
+			"columns": $.get("columns.json"),
+			"rows": $.get("https://script.google.com/macros/s/AKfycbzZu3vCDFG3SR_OincR7fcKjW6MxWPLVQu9P9401tPwCqd7-3M/exec")
+		});
+	});
 </script>
-<link rel="stylesheet" type="text/css" href="css/tablestyle.css">
 </body>
+</html>
