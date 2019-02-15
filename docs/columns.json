@@ -1,5 +1,5 @@
 [
-  {"name":"Line 名稱","title":"Line 名稱"},
+  {"name":"Line 名稱","title":"Line 名稱","style": "blue"},
   {"name":"Steam ID","title":"Steam ID","breakpoints":"xs sm md"},
   {"name":"EA/ Origin ID","title":"EA/ Origin ID","breakpoints":"xs sm md"},
     {"name":"BattleTag ID","title":"BattleTag ID","breakpoints":"xs sm md"},
@@ -8,5 +8,6 @@
     {"name":"Oculus","title":"Oculus","breakpoints":"xs sm md"},
   {"name":"XBOX Live","title":"XBOX Live","breakpoints":"xs sm md"},
     {"name":"Epic Games","title":"Epic Games","breakpoints":"xs sm md"},
-	    {"name":"Ubisoft","title":"Ubisoft","breakpoints":"xs sm md"}
+      {"name":"Ubisoft","title":"Ubisoft","breakpoints":"xs sm md"},
+      {"name":"Discord #ID","title":"Discord #ID","breakpoints":"xs sm md"}
 ]
